@@ -110,15 +110,3 @@ $di->set(
         return $flash;
     }
 );
-
-$di['db'] = function () use ($config) {
-
-    $dbAdapter = $config->database->adapter;
-
-    return new $dbAdapter([
-        "host" => $config->database->host,
-        "username" => $config->database->username,
-        "password" => $config->database->password,
-        "dbname" => $config->database->dbname
-    ]);
-};
