@@ -1,6 +1,6 @@
 {% extends 'layout.volt' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Add New Idea{% endblock %}
 
 {% block styles %}
 
