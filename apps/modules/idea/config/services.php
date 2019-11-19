@@ -36,7 +36,9 @@ $di['view'] = function () {
     return $view;
 };
 
-$di['db'] = function () use ($config) {
+$di['db'] = function () use ($di) {
+
+    $config = $di->get('config');
 
     $dbAdapter = $config->database->adapter;
 
