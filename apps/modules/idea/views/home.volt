@@ -1,6 +1,6 @@
 {% extends 'layout.volt' %}
 
-{% block title %}Idea Brainstorming System{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block styles %}
 
