@@ -4,7 +4,7 @@ namespace Idy\Idea\Controllers\Web;
 
 use Phalcon\Mvc\Controller;
 
-class IndexController extends Controller
+class IdeaController extends Controller
 {
     public function indexAction()
     {

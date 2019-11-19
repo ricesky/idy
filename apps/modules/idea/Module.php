@@ -17,6 +17,7 @@ class Module implements ModuleDefinitionInterface
             'Idy\Idea\Infrastructure' => __DIR__ . '/infrastructure',
             'Idy\Idea\Application' => __DIR__ . '/application',
             'Idy\Idea\Controllers\Web' => __DIR__ . '/controllers/web',
+            'Idy\Idea\Controllers\Api' => __DIR__ . '/controllers/api',
             'Idy\Idea\Controllers\Validators' => __DIR__ . '/controllers/validators',
         ]);
 
