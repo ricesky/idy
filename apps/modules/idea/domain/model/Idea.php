@@ -36,6 +36,11 @@ class Idea
         return $this->description;
     }
 
+    public function author()
+    {
+        return $this->author;
+    }
+
     public function votes()
     {
         return $this->votes;
