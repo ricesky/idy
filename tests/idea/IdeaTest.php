@@ -3,17 +3,19 @@ declare(strict_types=1);
 
 use \PHPUnit\Framework\TestCase;
 use \Idy\Idea\Domain\Model\Idea;
+use \Idy\Idea\Domain\Model\Author;
 
 class IdeaTest extends TestCase
 {
 
     public function testCanBeInstantiated() : void
     {
-        $idea = Idea::makeIdea("my idea", "my description", "the author");
+        $author = new Author("John Doe", "john.doe@mail.com");
+        $idea = Idea::makeIdea("my idea", "my description", $author);
 
-        $this->assetEquals('my idea', $idea->title());
-        $this->assetEquals('my description', $idea->description());
-        $this->assetEquals('the author', $idea->author());
+        $this->assertEquals("my idea", $idea->title());
+        $this->assertEquals("my description", $idea->description());
+        $this->assertEquals($author, $idea->author());
     }
     
 }
