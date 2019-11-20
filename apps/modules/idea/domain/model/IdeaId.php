@@ -2,7 +2,7 @@
 
 namespace Idy\Idea\Domain\Model;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 class IdeaId
 {
