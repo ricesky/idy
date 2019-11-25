@@ -4,37 +4,20 @@ namespace Idy\Idea\Domain\Model;
 
 class Rating
 {
-    private $user;
+    private $id;
+    private $email;
     private $value;
 
-    public function __construct($user, $value) 
+    public function __construct(RatingId $id, $email, RatingValue $value) 
     {
-        $this->user = $user;
+        $this->id = $id;
+        $this->email = $email;
         $this->value = $value;
     }
 
-    public function user()
-    {
-        return $this->user;
-    }
-
-    public function value()
+    public function value() : RatingValue
     {
         return $this->value;
-    }
-
-    public function equals(Rating $rating) 
-    {
-        return $this->user === $rating->user() && 
-                $this->value === $rating->value();
-    }
-
-    public function isValid() 
-    {
-        if ($user && $value && $value > 0 && $value <= 5) {
-            return true;
-        }
-        return false;
     }
 
 }

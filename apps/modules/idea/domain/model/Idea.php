@@ -8,18 +8,8 @@ class Idea
     private $title;
     private $description;
     private $author;
-    private $ratings;
-    private $votes;
-    
-    public function __construct(IdeaId $id, $title, $description, Author $author)
-    {
-        $this->id = $id;
-        $this->title = $title;
-        $this->description = $description;
-        $this->author = $author;
-        $this->ratings = array();
-        $this->votes = 0;
-    }
+    private $averageRating;
+    private $totalVotes;
 
     public function id() 
     {
@@ -41,14 +31,31 @@ class Idea
         return $this->author;
     }
 
-    public function votes()
+    public function totalVotes()
     {
-        return $this->votes;
+        return $this->totalVotes;
     }
 
-    public function addRating($user, $ratingValue)
+    public function averageRating()
     {
-        $newRating = new Rating($user, $ratingValue);
+        return $this->averageRating;
+    }
+
+    public function __construct(
+        IdeaId $id, $title, $description, 
+        Author $author, $averageRating, $totalVotes)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->description = $description;
+        $this->author = $author;
+        $this->averageRating = $averageRating;
+        $this->totalVotes = $totalVotes;
+    }
+
+    public function addRating($raterEmail, RatingValue $ratingValue)
+    {
+        $newRating = new Rating(new RatingId(), $raterEmail, $ratingValue);
 
         if ($newRating->isValid()) {
             $exist = false;
@@ -77,21 +84,11 @@ class Idea
         $this->votes = $this->votes + 1;
     }
 
-    public function averageRating()
+    public static function makeIdea($title, $description, $authorName, $authorEmail)
     {
-        $numberOfRatings = count($this->rating);
-        $totalRatings = 0;
-
-        foreach ($this->ratings as $rating) {
-            $totalRatings += $rating->value();
-        }
-
-        return $totalRatings / $numberOfRatings;
-    }
-
-    public static function makeIdea($title, $description, $author)
-    {
-        $newIdea = new Idea(new IdeaId(), $title, $description, $author);
+        $author = new Author($authorName, $authorEmail);
+        
+        $newIdea = new Idea(new IdeaId(), $title, $description, $author, 0, 0);
         
         return $newIdea;
     }

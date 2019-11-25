@@ -98,66 +98,20 @@
 {% block content %}
 
     <ul>
-        <li>
-            <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
-            </div>
-        </li>
+        {% for idea in ideas %}
+
         <li>
            <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
+                <h2>{{ idea['title'] }}</h2>
+                <p>{{ idea['description'] }}</p>
+                <div class="author">{{ idea['author_name'] }}</div>
+                <div class="email">{{ idea['author_email'] }}</div>
+                <div class="rating">Ratings: {{ idea['rating'] }} <a href="{{ url('idea/rate/') }}{{ idea['id'] }}">Rate</a></div>
+                <div class="rating">Votes: {{ idea['vote'] }} <a href="{{ url('idea/vote/') }}{{ idea['id'] }}">Vote</a></div>
             </div>
         </li>
-        <li>
-            <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
-            </div>
-        </li>  
-        <li>
-           <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
-            </div>
-        </li>    
-        <li>
-            <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
-            </div>
-        </li> 
-        <li>
-            <div class="sticky">
-                <h2>Idea Title #1</h2>
-                <p>Idea Content #1</p>
-                <div class="author">By Andrew</div>
-                <div class="email">andrew@mail.com</div>
-                <div class="rating">Ratings: 112 <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">Votes: 112 <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
-            </div>
-        </li>           
+            
+        {% endfor %}       
     </ul>
 
 {% endblock %}

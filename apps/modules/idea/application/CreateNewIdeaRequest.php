@@ -4,13 +4,15 @@ namespace Idy\Idea\Application;
 
 class CreateNewIdeaRequest
 {
-    public $ideaTitle;
+    public $title;
+    public $description;
     public $authorName;
     public $authorEmail;
 
-    public function __construct($ideaTitle, $authorName, $authorEmail)
+    public function __construct($title, $description, $authorName, $authorEmail)
     {
-        $this->ideaTitle = $ideaTitle;
+        $this->title = $title;
+        $this->description = $description;
         $this->authorName = $authorName;
         $this->authorEmail = $authorEmail;
     }
