@@ -18,6 +18,7 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	/**
 	 * Not Found Routing
 	 */
+	/*
 	$router->notFound(
 		[
 			'namespace' => 'Phalcon\Init\Common\Controllers',
@@ -25,6 +26,7 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 			'action'     => 'route404',
 		]
 	);
+	*/
 
 	/**
 	 * Module Routing
