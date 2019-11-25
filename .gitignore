@@ -189,7 +189,7 @@ tags
 [._]*.un~
 
 ### VisualStudioCode ###
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -228,5 +228,8 @@ $RECYCLE.BIN/
 ### Composer ###
 composer.phar
 /vendor/
+
+### PHPUnit ###
+.phpunit.result.cache
 
 # End of https://www.gitignore.io/api/vim,linux,macos,phalcon,windows,phpstorm,sublimetext,visualstudiocode
