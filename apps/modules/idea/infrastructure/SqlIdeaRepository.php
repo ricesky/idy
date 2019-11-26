@@ -8,6 +8,9 @@ use Idy\Idea\Domain\Model\IdeaRepository;
 use Idy\Idea\Domain\Model\Author;
 use Idy\Idea\Domain\Model\Idea;
 use Idy\Idea\Domain\Model\IdeaId;
+use Idy\Idea\Domain\Model\Rating;
+use Idy\Idea\Domain\Model\RatingId;
+use Idy\Idea\Domain\Model\RatingValue;
 
 class SqlIdeaRepository implements IdeaRepository
 {
@@ -47,6 +50,22 @@ class SqlIdeaRepository implements IdeaRepository
                 $result['rating'],
                 $result['vote']
             );
+
+            $sql = "SELECT id, rate, rater_email, idea_id
+                FROM rating 
+                WHERE idea_id = :idea_id";
+
+            $result = $db->fetchAll($sql, \Phalcon\Db::FETCH_ASSOC, [ 
+                'idea_id' => $id->id()
+            ]);
+            
+            foreach($result as $row) {
+                $idea->addRating(
+                    new RatingId($row['id']), 
+                    $row['rater_email'],
+                    new RatingValue($row['rate'])
+                );
+            }
 
             return $idea;
         }

@@ -106,7 +106,7 @@
                 <p>{{ idea['description'] }}</p>
                 <div class="author">{{ idea['author_name'] }}</div>
                 <div class="email">{{ idea['author_email'] }}</div>
-                <div class="rating">Ratings: {{ idea['rating'] }} <a href="{{ url('idea/rate/') }}{{ idea['id'] }}">Rate</a></div>
+                <div class="rating">Ratings: {{ idea['rating'] }} <a href="{{ url('idea/rating/rate/') }}{{ idea['id'] }}">Rate</a></div>
                 <div class="rating">Votes: {{ idea['vote'] }} <a href="{{ url('idea/vote/') }}{{ idea['id'] }}">Vote</a></div>
             </div>
         </li>

@@ -9,6 +9,11 @@
 {% block content %}
 
 {{ flashSession.output() }}
+<div class="row">
+    <div class="col text-right">
+        <a href="{{ url('idea') }}" class="btn btn-danger">Back</a>
+    </div>
+</div>
 <br>
 <form method="post" action="{{ url('idea/idea/add') }}">
 
