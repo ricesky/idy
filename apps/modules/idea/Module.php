@@ -31,6 +31,8 @@ class Module implements ModuleDefinitionInterface
         $di->get('config')->merge($moduleConfig);
 
         include_once __DIR__ . '/config/services.php';
+
+        $di->get('event_publisher');
     }
 
 }

@@ -6,18 +6,17 @@ use Idy\Common\Events\DomainEvent;
 
 class IdeaRated implements DomainEvent 
 {
-    public $ideaId;
-    public $rating;
-    public $email;
+    public $idea;
+    public $raterEmail;
 
     private $occuredOn;
 
     public function __construct(
-        IdeaId $id, RatingValue $rating, $email)
+        Idea $idea,
+        $raterEmail)
     {
-        $this->ideaId = $id;
-        $this->rating = $rating;
-        $this->email = $email;
+        $this->idea = $idea;
+        $this->raterEmail = $raterEmail;
     }
 
     /**

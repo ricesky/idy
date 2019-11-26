@@ -7,6 +7,9 @@ use Phalcon\Mvc\Controller;
 use Idy\Idea\Application\GetIdeaService;
 use Idy\Idea\Application\GetIdeaResponse;
 
+use Idy\Idea\Application\RateIdeaRequest;
+use Idy\Idea\Application\RateIdeaService;
+
 class RatingController extends Controller
 {
     public function rateAction($param)
@@ -30,6 +33,21 @@ class RatingController extends Controller
     public function saveAction()
     {
         if ($this->request->isPost()) {
+            $ideaId = $this->request->getPost('id');
+            $rating = $this->request->getPost('rating');
+            $email = $this->request->getPost('email');
+
+            $request = new RateIdeaRequest($ideaId, $rating, $email);
+
+            $ideaRepository = $this->di->getShared('sql_idea_repository');
+            $service = new RateIdeaService($ideaRepository);
+
+            try {
+                $service->execute($request);
+            } catch (IdeaNotFoundException $e) {
+                $this->flashSession->warning("<h4 class=\"alert-heading\">Idea not found!</h4>");
+            } 
+
             
         }
     }

@@ -4,13 +4,15 @@ namespace Idy\Idea\Application;
 
 class RateIdeaRequest
 {
-    public $id;
+    public $ideaId;
     public $rating;
+    public $email;
 
-    public function __construct($id, $rating)
+    public function __construct($ideaId, $rating, $email)
     {
-        $this->id = $id;
+        $this->ideaId = $ideaId;
         $this->rating = $rating;
+        $this->email = $email;
     }
 
 }

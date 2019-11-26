@@ -15,6 +15,7 @@ class Rating
         $this->id = $id;
         $this->email = $email;
         $this->value = $value;
+        $this->ideaId = $ideaId;
     }
 
     public function id() : ?RatingId
@@ -34,7 +35,9 @@ class Rating
 
     public function equals(Rating $rating)
     {
-        if ($this->id->equals($rating->id)) {
+        if ($this->email == $rating->email && 
+            $this->ideaId->equals($rating->ideaId)) 
+        {
             return true;
         } 
         return false;
